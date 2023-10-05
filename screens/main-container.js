@@ -6,14 +6,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // Screens
 import HomeScreen from './home-page';
 import UserSreen from './user-page';
-import JournalScreen from './journal-page';
+import JournalNav from '../stack/journal-stack';
 //Screen names
 const homeName = "Home";
 const userName = "User";
 const journalName="Journal";
 
 const Tab = createBottomTabNavigator();
-
 function MainContainer() {
   return (
     <NavigationContainer>
@@ -47,10 +46,8 @@ function MainContainer() {
         }}>
 
         <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={journalName} component={JournalScreen} />
-        <Tab.Screen name={userName} component={UserSreen} />
-        
-
+        <Tab.Screen name={journalName} component={JournalNav} />
+        <Tab.Screen name={userName} component={UserSreen} />        
       </Tab.Navigator>
     </NavigationContainer>
   );
