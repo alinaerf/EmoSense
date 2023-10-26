@@ -1,7 +1,7 @@
 import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import InputField from '../components/input-field';
+import InputField from '../../components/input-field';
 
 export default function LoginScreen({navigation}){
     return(
@@ -26,11 +26,11 @@ export default function LoginScreen({navigation}){
             
             <View style={{flexDirection:'row', justifyContent:'space-between', marginBottom:30}}>
                 <TouchableOpacity onPress={()=>{}} style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
-                <Image source={require('../assets/google.png')} height={24} width={24}/>
+                <Image source={require('./icons/google.png')} height={24} width={24}/>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={()=>{}} style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
-                <Image source={require('../assets/facebook.png')} height={24} width={24}/>
+                <Image source={require('./icons/facebook.png')} height={24} width={24}/>
                 </TouchableOpacity>
             </View>
             

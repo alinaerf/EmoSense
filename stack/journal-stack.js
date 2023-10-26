@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import JournalScreen from '../screens/journal-page';
-import EntryPage from '../screens/entry-page';
-import AddEntryScreen from '../screens/add-entry-page';
+import JournalScreen from '../screens/Journal/journal-page';
+import EntryPage from '../screens/Journal/entry-page';
+import AddEntryScreen from '../screens/Journal/add-entry-page';
 export default function JournalNav(){
     const JournalStack=createStackNavigator();
     return(

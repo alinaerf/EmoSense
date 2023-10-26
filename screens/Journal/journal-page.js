@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-import JournalList from '../components/journal-list';
+import JournalList from '../../components/journal-list';
 
 export default function JournalScreen({navigation}) {
   return (
