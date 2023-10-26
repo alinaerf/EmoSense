@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
-import HomeScreen from '../screens/Home/home-page';
-import UserSreen from '../screens/User/user-page';
+import HomeNav from './home-stack';
 import JournalNav from './journal-stack';
+import UserNav from './user-stack';
 //Screen names
 const homeName = "Home";
 const userName = "User";
@@ -45,9 +45,9 @@ function MainContainer() {
           style: { padding: 10, height: 70}
         }}>
 
-        <Tab.Screen name={homeName} component={HomeScreen} />
+        <Tab.Screen name={homeName} component={HomeNav} />
         <Tab.Screen name={journalName} component={JournalNav} />
-        <Tab.Screen name={userName} component={UserSreen} />        
+        <Tab.Screen name={userName} component={UserNav} />        
       </Tab.Navigator>
     </NavigationContainer>
   );
