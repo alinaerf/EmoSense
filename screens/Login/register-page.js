@@ -1,13 +1,20 @@
-import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image, Platform, Pressable} from 'react-native';
+import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image, Platform, Pressable, ScrollView} from 'react-native';
 import { useState } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import InputField from '../../components/input-field';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { app } from '../../firebase/config';
+import { CurrentUser } from '../../App';
 export default function RegistrationScreen({navigation}){
+    const [name, setName]=useState('');
+    const [email, setEmail]=useState('');
+    const [password, setPassword]=useState('');
+    const [confirmPassword, setConfirmPassword]=useState('');
     const [date, setDate]=useState(new Date());
     const [showPicker, setShowPicker]=useState(false);
     const [dateOfBirth,setDateOfBirth]=useState("");
+    const {userId, setUserId}=useContext(CurrentUser)
     const toggleDatePicker = ()=>{
         setShowPicker(!showPicker)
     }
@@ -22,6 +29,40 @@ export default function RegistrationScreen({navigation}){
         } else {
             toggleDatePicker();
         }
+    }
+
+    const onRegisterPress = ()=>{
+        if (password!== confirmPassword){
+            alert("Passwords don't match!")
+            return
+        }
+        app
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((response) => {
+            const uid = response.user.uid
+            const data = {
+                id: uid,
+                email,
+                name,
+            };
+            const usersRef = app.firestore().collection('users')
+            usersRef
+                .doc(uid)
+                .set(data)
+                .then(() => {
+                    setUserId(uid)
+                    navigation.navigate("Main", {screen: 'Home', params:{
+                        screen:'Articles'
+                    }})
+                })
+                .catch((error) => {
+                    alert(error)
+                });
+        })
+        .catch((error) => {
+            alert(error)
+    });
     }
     const confirmIOSDate =()=>{
         setDateOfBirth(date.toDateString());
@@ -49,8 +90,8 @@ export default function RegistrationScreen({navigation}){
                 </TouchableOpacity>
             </View> 
             <Text style={{textAlign:"center", color:'#666', marginBottom:30}}> Or, register with email ... </Text>           
-            <InputField label={'Email address'} icon={<MaterialIcons name='alternate-email' size={20} color='#666'style={{marginRight:5}}/>} keyboardType={'email-address'}/>
-            <InputField label ={'Full name'} icon={<Ionicons name='person-outline' size={20} color='#666' style={{marginRight:5}}/>}/>
+            <InputField label={'Email address'} icon={<MaterialIcons name='alternate-email' size={20} color='#666'style={{marginRight:5}}/>} keyboardType={'email-address'} onChangeFunc={(text)=>setEmail(text)} value={email}/>
+            <InputField label ={'Full name'} icon={<Ionicons name='person-outline' size={20} color='#666' style={{marginRight:5}}/>} value={name} onChangeFunc={(text)=>setName(text)}/>
             <View>
                 {showPicker &&(
                     <DateTimePicker
@@ -85,11 +126,11 @@ export default function RegistrationScreen({navigation}){
                 </Pressable>    
                 )}          
             </View>
-            <InputField label={'Password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'}/>
-            <InputField label={'Confirm password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'}/>
+            <InputField label={'Password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} value={password} onChangeFunc={(text)=>setPassword(text)}/>
+            <InputField label={'Confirm password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} value={confirmPassword} onChangeFunc={(text)=>setConfirmPassword(text)}/>
 
-            <TouchableOpacity style={{backgroundColor:'#AD40AF', padding:20, borderRadius:10, marginBottom:30}}>
-                <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Register</Text>
+            <TouchableOpacity style={{backgroundColor:'#AD40AF', padding:20, borderRadius:10, marginBottom:30}} onPress={onRegisterPress}>
+                <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Create account</Text>
             </TouchableOpacity>
             
             </View>
