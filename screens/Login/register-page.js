@@ -1,5 +1,5 @@
 import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image, Platform, Pressable, ScrollView} from 'react-native';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import InputField from '../../components/input-field';
