@@ -15,7 +15,11 @@ export default function App() {
       }}
     >
 <NavigationContainer>
-      <AppStack.Navigator>
+      <AppStack.Navigator
+        screenOptions={{
+          headerShown:false,
+      }}
+      >
         <AppStack.Screen name="Auth" component={AuthStack}/>
         <AppStack.Screen  name="Main" component={MainContainer}/>
       </AppStack.Navigator>

@@ -31,17 +31,22 @@ function MainContainer() {
               iconName = focused ? 'book' : 'book-outline';
 
             }     
-
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'grey',
-          labelStyle: { paddingBottom: 10, fontSize: 10 },
-          style: { padding: 10, height: 70}
-        }}>
+          tabBarActiveTintColor:"tomato", 
+          tabBarInactiveTintColor:"grey",
+          tabBarLabelStyle:{
+            paddingBottom: 10,
+            fontSize: 10
+          },
+          tabBarStyle:[
+            {
+              display:'flex'
+            },
+            null
+          ], 
+          headerShown:false,
+        })}>
 
         <Tab.Screen name={homeName} component={HomeNav} />
         <Tab.Screen name={journalName} component={JournalNav} />

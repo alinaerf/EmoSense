@@ -5,7 +5,11 @@ import RegistrationScreen from '../screens/Login/register-page';
 const Stack=createStackNavigator();
 export default function AuthStack(){
     return(
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown:false,
+            }}
+        >
             <Stack.Screen name="Login" component={LoginScreen}/>
             <Stack.Screen name="Register" component={RegistrationScreen}/>
         </Stack.Navigator>
