@@ -20,20 +20,12 @@ export default function HomeScreen({navigation}) {
     })
   })
   return (
-    <ScrollView>
+    <View>
       <View style={{height:200, backgroundColor:'#AD40AF', justifyContent:'center',alignItems: 'center'}}>
       <Text style={{ fontSize: 25, color:'white'}}>Welcome back, {userName}!</Text>
       </View>
       <Text style={{fontSize:20, marginLeft:10, marginVertical:10, fontWeight:700}}>Articles for you</Text>
       <ArticleList/>
-
-      <Text style={{fontSize:20, marginLeft:10, marginVertical:10, fontWeight:700}}>Trending articles</Text>
-      <ArticleList/>
-
-
-
-
-
-</ScrollView>
+</View>
   );
 }

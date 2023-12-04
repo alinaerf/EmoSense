@@ -13,7 +13,7 @@ const JournalList =({navigation})=>{
       if(!userId){
         alert("No user authenticated!")
       }
-      console.log("useEFFECT triggered?")
+      //console.log("useEFFECT triggered?")
       const fetchData = async ()=>{
         try {
             const response= await db.collection('journal').where("user_id", '==', userId).get()

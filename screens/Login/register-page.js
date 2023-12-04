@@ -40,11 +40,20 @@ export default function RegistrationScreen({navigation}){
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then((response) => {
+            const current= new Date()
+            const monthNames = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+              ];
+            
+            const registerDate=monthNames[current.getMonth()] + ', '+ current.getFullYear();
             const uid = response.user.uid
             const data = {
                 id: uid,
                 email,
                 name,
+                date:date,
+                register:registerDate,
             };
             const usersRef = app.firestore().collection('users')
             usersRef

@@ -7,6 +7,7 @@ import { db } from '../../firebase/config';
 export default function UserScreen({navigation}) {
   const {userId, setUserId}=useContext(CurrentUser)
   const [userName, setUserName]=useState('');
+  const [register, setRegister]=useState('');
   useEffect(()=>{
     if(!userId){
       alert("No user authenticated!")
@@ -16,6 +17,7 @@ export default function UserScreen({navigation}) {
     .get()
     .then((response)=>{
       response.docs[0].data().name?setUserName(response.docs[0].data().name):null;
+      response.docs[0].data().register?setRegister(response.docs[0].data().register):null;
     })
   })
   return (
@@ -24,7 +26,9 @@ export default function UserScreen({navigation}) {
       <Image source={require('./images/profile-pic.jpg')} style={{width:100, height:100, borderRadius:50}}/>
       <View style={{justifyContent:'center'}}>
       <Text style={{fontWeight:700, fontSize:30}}> {userName} </Text>
-      <Text> Joined October, 2023</Text>
+      {register!=='' && <Text>
+        Joined in {register}
+        </Text>}
       </View>
     </View>
     <View style={{alignItems: 'center', justifyContent: 'center' }}>
