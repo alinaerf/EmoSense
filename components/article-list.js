@@ -14,8 +14,8 @@ export default function ArticleList(){
             const response= await db.collection('articles').get()
             const newData=[]
             response.forEach(doc =>{
-                console.log(doc.data())
-                newData.push(doc.data())
+                //console.log({id: doc.id, ...doc.data(),})
+                newData.push({id: doc.id, ...doc.data(),})
             })
             setData(prevData=>[...prevData, ...newData])
         } catch (error) {

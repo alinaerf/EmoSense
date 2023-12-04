@@ -1,4 +1,4 @@
-import { View, TextInput, StyleSheet, Text } from "react-native"
+import { View, TextInput, StyleSheet, Text, SafeAreaView } from "react-native"
 import React from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useContext, useState } from "react";
@@ -16,11 +16,13 @@ export default function AddEntryScreen({navigation}){
             alert("Description is too short. Minimum length is 25 characters.")
             return
         }
+        const date= new Date()
         const journalRef=app.firebase.firestore().collection('journal');
         const postData={
             'user_id':userId,
             'title':title,
-            'text':description
+            'text':description,
+            date: date,
         };
         journalRef.add(postData).then(docRef => {
             console.log('Document added with auto-generated ID:', docRef.id);
@@ -32,7 +34,7 @@ export default function AddEntryScreen({navigation}){
     }
 
     return(
-        <View>
+        <SafeAreaView>
             <TextInput
                 value={title}
                 onChangeText={onChangeTitle}
@@ -49,7 +51,7 @@ export default function AddEntryScreen({navigation}){
                 <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add!</Text>
             </TouchableOpacity>
 
-        </View>
+        </SafeAreaView>
     )
 }
 const style=StyleSheet.create({

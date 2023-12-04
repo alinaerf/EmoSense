@@ -33,8 +33,8 @@ function MainContainer() {
             }     
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor:"tomato", 
-          tabBarInactiveTintColor:"grey",
+          tabBarActiveTintColor:"#AD40AF", 
+          tabBarInactiveTintColor:"black",
           tabBarLabelStyle:{
             paddingBottom: 10,
             fontSize: 10
