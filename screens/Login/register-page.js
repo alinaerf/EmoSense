@@ -1,4 +1,4 @@
-import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image, Platform, Pressable, ScrollView} from 'react-native';
+import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image, Platform, Pressable, Switch} from 'react-native';
 import { useState, useContext } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,7 +14,11 @@ export default function RegistrationScreen({navigation}){
     const [date, setDate]=useState(new Date());
     const [showPicker, setShowPicker]=useState(false);
     const [dateOfBirth,setDateOfBirth]=useState("");
+    const [MLopt, setMLOpt]=useState(false)
     const {userId, setUserId}=useContext(CurrentUser)
+    const toggleOpt = ()=>{
+        setMLOpt(!MLopt)
+    }
     const toggleDatePicker = ()=>{
         setShowPicker(!showPicker)
     }
@@ -54,6 +58,7 @@ export default function RegistrationScreen({navigation}){
                 name,
                 date:date,
                 register:registerDate,
+                'MLopt': MLopt,
             };
             const usersRef = app.firestore().collection('users')
             usersRef
@@ -137,10 +142,23 @@ export default function RegistrationScreen({navigation}){
             </View>
             <InputField label={'Password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} value={password} onChangeFunc={(text)=>setPassword(text)}/>
             <InputField label={'Confirm password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} value={confirmPassword} onChangeFunc={(text)=>setConfirmPassword(text)}/>
+            
+            <View style={{flexDirection:'row', paddingBottom:8, marginBottom:25}}>
+                <Text style={{flex:1, paddingVertical:0, }}> Opt in for ML features?</Text>
+            <Switch
+                trackColor={{false: '#767577', true: '#AD40AF'}}
+                thumbColor={MLopt ? '#813082' : '#f4f3f4'}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleOpt}
+                value={MLopt}
+            />
+            </View>
 
             <TouchableOpacity style={{backgroundColor:'#AD40AF', padding:20, borderRadius:10, marginBottom:30}} onPress={onRegisterPress}>
                 <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Create account</Text>
             </TouchableOpacity>
+
+            
             
             </View>
             
