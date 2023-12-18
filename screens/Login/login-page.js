@@ -53,7 +53,7 @@ export default function LoginScreen({navigation}){
             </Text>
             <InputField label={'Email address'} icon={<MaterialIcons name='alternate-email' size={20} color='#666'style={{marginRight:5}}/>} keyboardType={'email-address'} value={email} onChangeFunc={(text)=>setEmail(text)}/>
             <InputField label={'Password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} fieldButtonLabel={'Forgot?'} value={password} onChangeFunc={(text)=>setPassword(text)}/>
-            <TouchableOpacity style={{backgroundColor:'#AD40AF', padding:20, borderRadius:10, marginBottom:30}} onPress={onPressLogin}>
+            <TouchableOpacity style={{backgroundColor:'#7455f6', padding:20, borderRadius:10, marginBottom:30}} onPress={onPressLogin}>
                 <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Login</Text>
             </TouchableOpacity>
             
@@ -72,7 +72,7 @@ export default function LoginScreen({navigation}){
             <View style={{flexDirection:'row', justifyContent:'center', marginBottom:30}}>
             <Text> New to the app?</Text>
             <TouchableOpacity onPress={()=>{navigation.navigate("Register")}}>
-                <Text style={{color:'#AD40AF', fontWeight:700}}>Register</Text>
+                <Text style={{color:'#7455f6', fontWeight:700}}>Register</Text>
             </TouchableOpacity>
 
             </View>

@@ -10,7 +10,7 @@ export default function InputField({label, icon, inputType, keyboardType,onChang
             <TextInput placeholder={label} keyboardType={keyboardType} style={{flex:1, paddingVertical:0}} onChangeText={onChangeFunc}/>
         )}
         <TouchableOpacity onPress={fieldButtonFunction}>
-            <Text style={{color:'#AD40AF', fontWeight:700}}> {fieldButtonLabel}</Text>
+            <Text style={{color:'#7455f6', fontWeight:700}}> {fieldButtonLabel}</Text>
         </TouchableOpacity>
     </View> 
     )

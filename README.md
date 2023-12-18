@@ -10,7 +10,8 @@ EmoSense, a mobile application for everyday use, aims to improve user’s unders
 git clone < project-url.git >
 ```
 
-- Use Expo Go application and start an application build
+- Start an application build
 ```
 npx expo start
 ```
+- Scan QR code with Expo Go

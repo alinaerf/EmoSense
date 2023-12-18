@@ -47,7 +47,7 @@ export default function AddEntryScreen({navigation}){
                 placeholder="Description"
                 style={style.input2}
             />
-            <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'purple'}}>
+            <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'#7455f6', borderRadius:10, padding:5}}>
                 <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add!</Text>
             </TouchableOpacity>
 

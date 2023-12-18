@@ -117,7 +117,7 @@ export default function RegistrationScreen({navigation}){
                 )}
                 {showPicker && Platform.OS==='ios' && (
                     <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                        <TouchableOpacity onPress={confirmIOSDate}  style={{backgroundColor:'#AD40AF', padding:20, borderRadius:10, marginBottom:30}}>
+                        <TouchableOpacity onPress={confirmIOSDate}  style={{backgroundColor:'#7455f6', padding:20, borderRadius:10, marginBottom:30}}>
                             <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}> Confirm </Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={toggleDatePicker} style={{backgroundColor:'#FFF', padding:20, borderRadius:10, marginBottom:30}}>
@@ -146,7 +146,7 @@ export default function RegistrationScreen({navigation}){
             <View style={{flexDirection:'row', paddingBottom:8, marginBottom:25}}>
                 <Text style={{flex:1, paddingVertical:0, }}> Opt in for ML features?</Text>
             <Switch
-                trackColor={{false: '#767577', true: '#AD40AF'}}
+                trackColor={{false: '#767577', true: '#7455f6'}}
                 thumbColor={MLopt ? '#813082' : '#f4f3f4'}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleOpt}
@@ -154,7 +154,7 @@ export default function RegistrationScreen({navigation}){
             />
             </View>
 
-            <TouchableOpacity style={{backgroundColor:'#AD40AF', padding:20, borderRadius:10, marginBottom:30}} onPress={onRegisterPress}>
+            <TouchableOpacity style={{backgroundColor:'#7455f6', padding:20, borderRadius:10, marginBottom:30}} onPress={onRegisterPress}>
                 <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Create account</Text>
             </TouchableOpacity>
 
