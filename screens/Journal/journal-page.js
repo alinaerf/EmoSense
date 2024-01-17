@@ -15,7 +15,7 @@ export default function JournalScreen({navigation}) {
   
   const todayDate=current.getDate() +' '+monthNames[current.getMonth()] + ', '+ current.getFullYear();
   return (
-    <View >
+    <View style={{flex:1}}>
     <View style={{height:250, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:30}}>
     <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
         <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}><Fontisto name='bell' size={30} color={'black'}/></TouchableOpacity>
@@ -35,10 +35,10 @@ export default function JournalScreen({navigation}) {
       </TouchableOpacity>
     </View>
     </View>
-    <View>
+    <View style={{flex:3}}>
     <JournalList/>
     </View>
-    <TouchableOpacity style={{ backgroundColor:'#7455f6', height:50, justifyContent:'center', marginVertical:10, borderRadius:10}} onPress={()=>navigation.navigate("Add")}>
+    <TouchableOpacity style={{ backgroundColor:'#7455f6',maxHeight:50, justifyContent:'center', borderRadius:10,flex:1 }} onPress={()=>navigation.navigate("Add")}>
         <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add a new entry</Text>
     </TouchableOpacity>
     

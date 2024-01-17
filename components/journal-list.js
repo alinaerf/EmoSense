@@ -35,7 +35,7 @@ const JournalList =({navigation})=>{
         }, [])
       );
     return (
-        <View>
+        <View >
             <FlatList
                 data={data}
                 keyExtractor={item=>item.id}

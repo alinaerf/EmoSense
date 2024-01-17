@@ -1,15 +1,15 @@
 import {FlatList, Text, View} from 'react-native'
 import ArticleBanner from './article-banner'
-import { useState, useEffect } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { db } from '../firebase/config'
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function ArticleList(){
     const renderItem=({item})=>{
         return <ArticleBanner title={item.title} description={item.text}/>
     }
     const [data, setData]=useState([])
-    useEffect(()=>{
-      const fetchData = async ()=>{
+    const fetchData = async ()=>{
         try {
             const response= await db.collection('articles').get()
             const newData=[]
@@ -22,10 +22,15 @@ export default function ArticleList(){
             console.error('Error fetching data:', error);
         }
       }
-      fetchData();
-    }, [])
+    useFocusEffect(
+        React.useCallback(() => {
+          // Fetch data when the screen comes into focus
+            setData([])
+            fetchData();
+        }, [])
+      );
     return(
-        <View>
+        <View style={{flex:3}}>
                     <FlatList 
             data={data}
             keyExtractor={item=>item.id}

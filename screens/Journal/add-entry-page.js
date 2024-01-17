@@ -39,13 +39,18 @@ export default function AddEntryScreen({navigation}){
                 value={title}
                 onChangeText={onChangeTitle}
                 placeholder="Title"
-                style={style.input1}
+                multiline={true}
+                textAlign="center"
+                textAlignVertical="center"
+                style={{padding:20, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10, fontSize:35, maxHeight:80}}
             />
             <TextInput
                 value={description}
                 onChangeText={onChangeDesc}
                 placeholder="Description"
-                style={style.input2}
+                textAlignVertical="center"
+                multiline={true}
+                style={{padding:20, borderWidth:1, borderRadius:10, backgroundColor:'white', marginVertical:10, fontSize:20,maxHeight:500, minHeight:250}}
             />
             <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'#7455f6', borderRadius:10, padding:5}}>
                 <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add!</Text>

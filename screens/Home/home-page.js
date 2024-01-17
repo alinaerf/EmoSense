@@ -22,7 +22,7 @@ export default function HomeScreen({navigation}) {
     })
   })
   return (
-    <View>
+    <View style={{flex:1}}>
       <View style={{height:250, backgroundColor:'#7455f6', justifyContent:'center',alignItems: 'center', borderRadius:20}}>
         <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
         <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}><Fontisto name='bell' size={30} color={'white'}/></TouchableOpacity>

@@ -12,7 +12,7 @@ const JournalItem=({id, title, description, date})=>{
     
     const todayDate=journalDate.getDate() +' '+monthNames[journalDate.getMonth()] + ', '+ journalDate.getFullYear();
     return(
-        <View style={{padding:30, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10}}>
+        <View style={{padding:30, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white'}}>
             <Text style={{fontSize:18, fontWeight:600}}>{title}</Text>
             <Text>{todayDate}</Text>
             <TouchableOpacity onPress={()=>navigation.navigate('Entry', {title, description})} style={{backgroundColor:'#7455f6', justifyContent:'center', alignItems:'center', borderRadius:5, marginTop:5, padding:5}}>

@@ -57,7 +57,7 @@ export default function LoginScreen({navigation}){
                 <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Login</Text>
             </TouchableOpacity>
             
-            <Text style={{textAlign:"center", color:'#666', marginBottom:30}}> Or, login with ...</Text>
+            {/*<Text style={{textAlign:"center", color:'#666', marginBottom:30}}> Or, login with ...</Text>
             
             <View style={{flexDirection:'row', justifyContent:'space-between', marginBottom:30}}>
                 <TouchableOpacity  style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
@@ -67,7 +67,7 @@ export default function LoginScreen({navigation}){
                 <TouchableOpacity onPress={()=>{}} style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
                 <Image source={require('./icons/facebook.png')} height={24} width={24}/>
                 </TouchableOpacity>
-            </View>
+            </View>*/} 
             
             <View style={{flexDirection:'row', justifyContent:'center', marginBottom:30}}>
             <Text> New to the app?</Text>
