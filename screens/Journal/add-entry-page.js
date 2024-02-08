@@ -1,10 +1,11 @@
-import { View, TextInput, StyleSheet, Text, SafeAreaView } from "react-native"
+import { TextInput, Text, SafeAreaView } from "react-native"
 import React from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useContext, useState } from "react";
 import { CurrentUser } from '../../App';
 import { app } from '../../firebase/config';
 import calculateMLMood from "../../backend/ML_calculation";
+import styles from "../../styles/input-styles";
 export default function AddEntryScreen({navigation}){
     const [title, onChangeTitle] = useState('');
     const [description, onChangeDesc] = useState('');
@@ -38,14 +39,6 @@ export default function AddEntryScreen({navigation}){
         } catch (error) {
             console.error('Error adding document to Firestore:', error);
         }
-        
-        /*journalRef.add(postData).then(docRef => {
-            console.log('Document added with auto-generated ID:', docRef.id);
-            navigation.navigate('JournalList')
-          })
-          .catch(error => {
-            console.error('Error adding document to Firestore:', error);
-          });*/
     }
 
     return(
@@ -57,7 +50,7 @@ export default function AddEntryScreen({navigation}){
                 multiline={true}
                 textAlign="center"
                 textAlignVertical="center"
-                style={{margin:10,padding:20, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10, fontSize:35, maxHeight:80}}
+                style={styles.titleInput}
             />
             <TextInput
                 value={description}
@@ -65,26 +58,12 @@ export default function AddEntryScreen({navigation}){
                 placeholder="Description"
                 textAlignVertical="center"
                 multiline={true}
-                style={{margin:10,padding:20, borderWidth:1, borderRadius:10, backgroundColor:'white', marginVertical:10, fontSize:20,maxHeight:500, minHeight:250}}
+                style={styles.textInput}
             />
-            <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'#7455f6', borderRadius:10, padding:5}}>
-                <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add!</Text>
+            <TouchableOpacity onPress={onAddPress}  style={styles.submitButton}>
+                <Text style={styles.btnText}>Add!</Text>
             </TouchableOpacity>
 
         </SafeAreaView>
     )
 }
-const style=StyleSheet.create({
-    input1:{
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10, 
-    }, 
-    input2:{
-        height: 150,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-    }
-})

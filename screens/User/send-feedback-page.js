@@ -1,6 +1,7 @@
-import { Text, SafeAreaView, TouchableOpacity, TextInput, StyleSheet } from "react-native"
+import { Text, SafeAreaView, TouchableOpacity, TextInput } from "react-native"
 import { useState } from "react";
 import { app } from '../../firebase/config';
+import styles from "../../styles/input-styles";
 export default function FeedbackScreen({navigation}){
     const [title, onChangeTitle] = useState('');
     const [description, onChangeDesc] = useState('');
@@ -35,33 +36,19 @@ export default function FeedbackScreen({navigation}){
                 value={title}
                 onChangeText={onChangeTitle}
                 placeholder="Feedback Title"
-                style={{margin:10, padding:20, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10, fontSize:35, maxHeight:80}}
+                style={styles.titleInput}
 
             />
             <TextInput
                 value={description}
                 onChangeText={onChangeDesc}
                 placeholder="Details"
-                style={{margin:10, padding:20, borderWidth:1, borderRadius:10, backgroundColor:'white', marginVertical:10, fontSize:20,maxHeight:500, minHeight:250}}
+                style={styles.textInput}
 
             />
-            <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'#7455f6', borderRadius:10, padding:5}}>
-                <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Send Feedback!</Text>
+            <TouchableOpacity onPress={onAddPress}  style={styles.submitButton}>
+                <Text style={styles.btnText}>Send Feedback!</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )
 }
-const style=StyleSheet.create({
-    input1:{
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10, 
-    }, 
-    input2:{
-        height: 150,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-    }
-})

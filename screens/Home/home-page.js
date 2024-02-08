@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import ArticleList from '../../components/article-list';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../../App';

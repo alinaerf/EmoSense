@@ -1,4 +1,4 @@
-import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image, Platform, Pressable, Switch} from 'react-native';
+import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Platform, Pressable, Switch} from 'react-native';
 import { useState, useContext } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -94,16 +94,6 @@ export default function RegistrationScreen({navigation}){
                 }}>
                 Register
             </Text>
-            {/*<View style={{flexDirection:'row', justifyContent:'space-between', marginBottom:30}}>
-                <TouchableOpacity onPress={()=>{}} style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
-                <Image source={require('./icons/google.png')} height={24} width={24}/>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>{}} style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
-                <Image source={require('./icons/facebook.png')} height={24} width={24}/>
-                </TouchableOpacity>
-            </View>  
-            <Text style={{textAlign:"center", color:'#666', marginBottom:30}}> Or, register with email ... </Text>           */}
             <InputField label={'Email address'} icon={<MaterialIcons name='alternate-email' size={20} color='#666'style={{marginRight:5}}/>} keyboardType={'email-address'} onChangeFunc={(text)=>setEmail(text)} value={email}/>
             <InputField label ={'Full name'} icon={<Ionicons name='person-outline' size={20} color='#666' style={{marginRight:5}}/>} value={name} onChangeFunc={(text)=>setName(text)}/>
             <View>

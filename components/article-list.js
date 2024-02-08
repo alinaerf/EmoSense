@@ -1,6 +1,6 @@
-import {FlatList, Text, View} from 'react-native'
+import {FlatList, View} from 'react-native'
 import ArticleBanner from './article-banner'
-import React,{ useState, useEffect } from 'react'
+import React,{ useState } from 'react'
 import { db } from '../firebase/config'
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -14,7 +14,6 @@ export default function ArticleList(){
             const response= await db.collection('articles').get()
             const newData=[]
             response.forEach(doc =>{
-                //console.log({id: doc.id, ...doc.data(),})
                 newData.push({id: doc.id, ...doc.data(),})
             })
             setData(prevData=>[...prevData, ...newData])

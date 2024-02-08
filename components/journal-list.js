@@ -1,4 +1,4 @@
-import { Text, View, FlatList, TouchableOpacity } from "react-native";
+import { View, FlatList } from "react-native";
 import { CurrentUser } from '../App';
 import { db } from '../firebase/config';
 import JournalItem from "./journal-item";
@@ -15,7 +15,6 @@ const JournalList =({navigation})=>{
             const response= await db.collection('journal').where("user_id", '==', userId).get()
             const newData=[]
             response.forEach(doc =>{
-                //console.log({id: doc.id, ...doc.data(),})
                 newData.push({id: doc.id, ...doc.data(),})
             })
             setData(prevData=>[...prevData, ...newData])

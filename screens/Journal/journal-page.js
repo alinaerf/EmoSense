@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import JournalList from '../../components/journal-list';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useState, useMemo } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
@@ -38,10 +37,24 @@ export default function JournalScreen({navigation}) {
     <View style={{flex:3}}>
     <JournalList/>
     </View>
-    <TouchableOpacity style={{ backgroundColor:'#7455f6',maxHeight:50, justifyContent:'center', borderRadius:10,flex:1 }} onPress={()=>navigation.navigate("Add")}>
-        <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add a new entry</Text>
+    <TouchableOpacity style={styles.addBtn} onPress={()=>navigation.navigate("Add")}>
+        <Text style={styles.addBtnText}>Add a new entry</Text>
     </TouchableOpacity>
     
 </View>
   );
 }
+const styles = StyleSheet.create({
+  addBtn: {
+    backgroundColor: '#7455f6',
+    maxHeight: 50,
+    justifyContent: 'center',
+    borderRadius: 10,
+    flex: 1
+  },
+  addBtnText: {
+    color: 'white',
+    fontSize: 15,
+    textAlign: 'center'
+  }
+})

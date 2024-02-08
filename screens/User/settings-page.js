@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, TouchableOpacity, View } from "react-native"
+import { Text, TouchableOpacity, View, StyleSheet} from "react-native"
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 export default function SettingsScreen({navigation}){
@@ -20,30 +20,45 @@ export default function SettingsScreen({navigation}){
             </View>
             <Text  style={{ fontSize: 35, color:'black', justifyContent:'center'}}> Settings</Text>
         </View>
-            <TouchableOpacity style={{marginVertical:10, marginHorizontal:20, borderWidth:1, borderRadius:8, backgroundColor:'white', height:50, justifyContent:'center'}}>
-                <Text style={{fontSize:25, marginLeft:10}}>Edit Profile</Text>
+            <TouchableOpacity style={styles.btn}>
+                <Text style={styles.text}>Edit Profile</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{marginVertical:10, marginHorizontal:20, borderWidth:1, borderRadius:8, backgroundColor:'white', height:50, justifyContent:'center'}}>
-                <Text style={{fontSize:25, marginLeft:10}}>Notifications</Text>
+            <TouchableOpacity style={styles.btn}>
+                <Text style={styles.text}>Notifications</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{marginVertical:10, marginHorizontal:20, borderWidth:1, borderRadius:8, backgroundColor:'white', height:50, justifyContent:'center'}} onPress={seeAbout}>
-                <Text style={{fontSize:25, marginLeft:10}}>About the app</Text>
+            <TouchableOpacity style={styles.btn} onPress={seeAbout}>
+                <Text style={styles.text}>About the app</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{marginVertical:10, marginHorizontal:20, borderWidth:1, borderRadius:8,backgroundColor:'white', height:50, justifyContent:'center'}} onPress={sendFeedback}>
-                <Text style={{fontSize:25, marginLeft:10}}>Suggestions</Text>
+            <TouchableOpacity style={styles.btn} onPress={sendFeedback}>
+                <Text style={styles.text}>Suggestions</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{marginVertical:10, marginHorizontal:20, borderWidth:1, borderRadius:8, backgroundColor:'white', height:50, justifyContent:'center'}} onPress={logOut}>
-                <Text style={{fontSize:25, marginLeft:10}}>Log out</Text>
+            <TouchableOpacity style={styles.btn} onPress={logOut}>
+                <Text style={styles.text}>Log out</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{marginVertical:10, marginHorizontal:20, borderWidth:1, borderRadius:8, backgroundColor:'white', height:50, justifyContent:'center'}}>
+            <TouchableOpacity style={styles.btn}>
                 <Text style={{fontSize:25, marginLeft:10, color:'red'}}>Delete account</Text>
             </TouchableOpacity>
 
         </View>
     )
 }
+const styles = StyleSheet.create({
+    btn: {
+        marginVertical: 10,
+        marginHorizontal: 20,
+        borderWidth: 1,
+        borderRadius: 8,
+        backgroundColor: 'white',
+        height: 50,
+        justifyContent: 'center'
+    }, 
+    text: {
+        fontSize: 25,
+        marginLeft: 10
+    }
+})

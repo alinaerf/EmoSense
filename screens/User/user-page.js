@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../../App';
 import { db } from '../../firebase/config';

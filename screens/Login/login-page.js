@@ -1,4 +1,4 @@
-import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
+import {SafeAreaView, View, Text, TouchableOpacity, Image} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import InputField from '../../components/input-field';
@@ -56,19 +56,6 @@ export default function LoginScreen({navigation}){
             <TouchableOpacity style={{backgroundColor:'#7455f6', padding:20, borderRadius:10, marginBottom:30}} onPress={onPressLogin}>
                 <Text style={{textAlign:'center', fontWeight:700, color:'#FFF'}}>Login</Text>
             </TouchableOpacity>
-            
-            {/*<Text style={{textAlign:"center", color:'#666', marginBottom:30}}> Or, login with ...</Text>
-            
-            <View style={{flexDirection:'row', justifyContent:'space-between', marginBottom:30}}>
-                <TouchableOpacity  style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
-                <Image source={require('./icons/google.png')} height={24} width={24}/>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>{}} style={{borderColor:'#ddd', borderWidth:2, borderRadius:10,paddingHorizontal:30, paddingVertical:10 }}>
-                <Image source={require('./icons/facebook.png')} height={24} width={24}/>
-                </TouchableOpacity>
-            </View>*/} 
-            
             <View style={{flexDirection:'row', justifyContent:'center', marginBottom:30}}>
             <Text> New to the app?</Text>
             <TouchableOpacity onPress={()=>{navigation.navigate("Register")}}>

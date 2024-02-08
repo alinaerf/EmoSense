@@ -3,7 +3,6 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { API_KEY, AUTH_DOMAIN, DB_URL,PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID} from "@env"
 
-//To-do: Remove credentials from GitHub
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTH_DOMAIN,

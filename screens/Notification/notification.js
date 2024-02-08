@@ -93,66 +93,16 @@ export default function Notification() {
     )
 }
 const styles = StyleSheet.create({
-  searchInputContainer: {
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    elevation: 3,
-    width: 350,
-    },
    textContainer: {
     width: 300,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  searchInput: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 5,
-    paddingHorizontal: 10,
-  },
-  searchListView: {
-    backgroundColor: "white",
-    marginHorizontal: 10,
-  },
-  searchRow: {
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "lightgray",
-  },
-  searchContainer: {
-    position: "absolute",
-    top: '5%',
-    padding: 10,
-  },
-  toppedView: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    zIndex: 999,
-  },
-
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
-    zIndex: 999,
-  },
-  modalTopView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 20,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
     zIndex: 999,
   },
   modalView: {

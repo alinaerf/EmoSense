@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
-import { Text, View, FlatList, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import styles from "../styles/journal-styles";
 
 const JournalItem=({id, title, description, date, MLMood})=>{
     const navigation=useNavigation()
@@ -12,12 +13,12 @@ const JournalItem=({id, title, description, date, MLMood})=>{
     
     const todayDate=journalDate.getDate() +' '+monthNames[journalDate.getMonth()] + ', '+ journalDate.getFullYear();
     return(
-        <View style={{padding:30, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white'}}>
-            <Text style={{fontSize:18, fontWeight:600}}>{title}</Text>
+        <View style={styles.container}>
+            <Text style={styles.titleText}>{title}</Text>
             <Text>{todayDate}</Text>
             {MLMood?<Text>ML-assessed mood: {MLMood}</Text>:null}
-            <TouchableOpacity onPress={()=>navigation.navigate('Entry', {title, description})} style={{backgroundColor:'#7455f6', justifyContent:'center', alignItems:'center', borderRadius:5, marginTop:5, padding:5}}>
-                <Text style={{color:'white', fontSize:15}}>Expand</Text>
+            <TouchableOpacity onPress={()=>navigation.navigate('Entry', {title, description})} style={styles.button}>
+                <Text style={styles.text}>Expand</Text>
             </TouchableOpacity>
         </View>
     )
