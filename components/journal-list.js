@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useFocusEffect } from '@react-navigation/native';
 const JournalList =({navigation})=>{
     const renderItem =({item})=>{
-        return <JournalItem title={item.title} description={item.text} date={item.date}/>
+        return <JournalItem title={item.title} description={item.text} date={item.date} MLMood={item.MLMood}/>
     }
     const {userId, setUserId}=useContext(CurrentUser)
     const [data, setData]=useState([])

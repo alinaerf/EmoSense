@@ -4,11 +4,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useContext, useState } from "react";
 import { CurrentUser } from '../../App';
 import { app } from '../../firebase/config';
+import calculateMLMood from "../../backend/ML_calculation";
 export default function AddEntryScreen({navigation}){
     const [title, onChangeTitle] = useState('');
     const [description, onChangeDesc] = useState('');
     const {userId, setUserId}=useContext(CurrentUser)
-    const onAddPress = ()=>{
+    const onAddPress = async()=>{
         if (title.length < 5){
             alert("Title is too short. Minimum length is 5 characters.")
             return
@@ -16,21 +17,35 @@ export default function AddEntryScreen({navigation}){
             alert("Description is too short. Minimum length is 25 characters.")
             return
         }
-        const date= new Date()
-        const journalRef=app.firebase.firestore().collection('journal');
-        const postData={
-            'user_id':userId,
-            'title':title,
-            'text':description,
-            date: date,
-        };
-        journalRef.add(postData).then(docRef => {
+        
+        try {
+            const MLmood = await calculateMLMood(description)
+            const date= new Date()
+            const journalRef = app.firebase.firestore().collection('journal');
+            console.log("MOOD IS (Front):", MLmood)
+            const postData={
+                'user_id':userId,
+                'title':title,
+                'text': description,
+                'MLMood': MLmood,
+                date: date,
+            };
+            
+                await journalRef.add(postData);
+
+            console.log('Document added with auto-generated ID:');
+            navigation.navigate('JournalList');
+        } catch (error) {
+            console.error('Error adding document to Firestore:', error);
+        }
+        
+        /*journalRef.add(postData).then(docRef => {
             console.log('Document added with auto-generated ID:', docRef.id);
             navigation.navigate('JournalList')
           })
           .catch(error => {
             console.error('Error adding document to Firestore:', error);
-          });
+          });*/
     }
 
     return(
@@ -42,7 +57,7 @@ export default function AddEntryScreen({navigation}){
                 multiline={true}
                 textAlign="center"
                 textAlignVertical="center"
-                style={{padding:20, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10, fontSize:35, maxHeight:80}}
+                style={{margin:10,padding:20, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10, fontSize:35, maxHeight:80}}
             />
             <TextInput
                 value={description}
@@ -50,7 +65,7 @@ export default function AddEntryScreen({navigation}){
                 placeholder="Description"
                 textAlignVertical="center"
                 multiline={true}
-                style={{padding:20, borderWidth:1, borderRadius:10, backgroundColor:'white', marginVertical:10, fontSize:20,maxHeight:500, minHeight:250}}
+                style={{margin:10,padding:20, borderWidth:1, borderRadius:10, backgroundColor:'white', marginVertical:10, fontSize:20,maxHeight:500, minHeight:250}}
             />
             <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'#7455f6', borderRadius:10, padding:5}}>
                 <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Add!</Text>

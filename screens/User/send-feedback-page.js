@@ -35,15 +35,17 @@ export default function FeedbackScreen({navigation}){
                 value={title}
                 onChangeText={onChangeTitle}
                 placeholder="Feedback Title"
-                style={style.input1}
+                style={{margin:10, padding:20, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10, fontSize:35, maxHeight:80}}
+
             />
             <TextInput
                 value={description}
                 onChangeText={onChangeDesc}
                 placeholder="Details"
-                style={style.input2}
+                style={{margin:10, padding:20, borderWidth:1, borderRadius:10, backgroundColor:'white', marginVertical:10, fontSize:20,maxHeight:500, minHeight:250}}
+
             />
-            <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'purple'}}>
+            <TouchableOpacity onPress={onAddPress}  style={{ backgroundColor:'#7455f6', borderRadius:10, padding:5}}>
                 <Text style={{color: 'white', fontSize:15, textAlign:'center'}}>Send Feedback!</Text>
             </TouchableOpacity>
         </SafeAreaView>

@@ -5,11 +5,13 @@ import { CurrentUser } from '../../App';
 import { db } from '../../firebase/config';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Notification from '../Notification/notification';
 
 
 export default function HomeScreen({navigation}) {
   const {userId, setUserId}=useContext(CurrentUser)
-  const [userName, setUserName]=useState('');
+  const [userName, setUserName] = useState('');
+  const [newDay, setNewDay] = useState(false);
   useEffect(()=>{
     if(!userId){
       alert("No user authenticated!")
@@ -20,6 +22,24 @@ export default function HomeScreen({navigation}) {
     .then((response)=>{
       response.docs[0].data().name?setUserName(response.docs[0].data().name):null;
     })
+    const current= new Date()
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+    
+    const entryDate=[current.getDay()]+', '+monthNames[current.getMonth()] + ', '+ current.getFullYear();
+    db.collection('moods')
+      .where('user_id', '==', userId)
+      .where('date', '==', entryDate)
+      .get()
+      .then((response) => {
+        if (response.empty) {
+          setNewDay(true)
+        } else {
+          setNewDay(false)
+        }
+    })   
   })
   return (
     <View style={{flex:1}}>
@@ -34,7 +54,8 @@ export default function HomeScreen({navigation}) {
       <Text  style={{ fontSize: 25, color:'white', justifyContent:'center'}}> {userName}</Text>
       </View>
       </View>
-      <Text style={{fontSize:20, marginLeft:10, marginVertical:10, fontWeight:700}}>Articles for you</Text>
+      <Text style={{ fontSize: 20, marginLeft: 10, marginVertical: 10, fontWeight: 700 }}>Articles for you</Text>
+      {newDay?<Notification/>:null}
       <ArticleList/>
 </View>
   );
