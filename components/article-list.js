@@ -6,7 +6,7 @@ import { useFocusEffect } from '@react-navigation/native';
 
 export default function ArticleList(){
     const renderItem=({item})=>{
-        return <ArticleBanner title={item.title} description={item.text}/>
+        return <ArticleBanner title={item.title} description={item.text} link={item.link}/>
     }
     const [data, setData]=useState([])
     const fetchData = async ()=>{
