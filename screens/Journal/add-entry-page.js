@@ -21,7 +21,11 @@ export default function AddEntryScreen({navigation}){
         
         try {
             const MLmood = await calculateMLMood(description)
-            const date= new Date()
+            const date = new Date()
+            date.setHours(0);
+            date.setMinutes(0);
+            date.setSeconds(0);
+            date.setMilliseconds(0);
             const journalRef = app.firebase.firestore().collection('journal');
             console.log("MOOD IS (Front):", MLmood)
             const postData={

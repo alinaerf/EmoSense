@@ -8,10 +8,10 @@ export default analyzeSentiment = async (text) => {
             },
             body: JSON.stringify({ text: text }),
         });
-      const data = await response.json();
+        const data = await response.json();
+        console.log(data)
       return data.mood
     } catch (error) {
         console.log('Error performing sentiment analysis:', error)
-        console.error('Error performing sentiment analysis:', error);
     }
 };

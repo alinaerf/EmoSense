@@ -3,6 +3,7 @@ import Slider from "@react-native-community/slider";
 import { useState, useContext } from "react";
 import { CurrentUser } from '../../App';
 import { app } from '../../firebase/config';
+import style from "../../styles/notification-styles";
 export default function Notification() {
     const [notifVisible, setNotifVisible] = useState(true);
     const [mood, setMood] = useState(3);
@@ -50,11 +51,11 @@ export default function Notification() {
             setNotifVisible(!notifVisible);
         }}
         >
-            <View style={styles.centeredView}>
+            <View style={style.centeredView}>
                 
-                <View style={styles.modalView}>
+                <View style={style.modalView}>
                     
-                    <Text style={styles.modalText}>What is your mood today?</Text>
+                    <Text style={style.modalText}>What is your mood today?</Text>
 
                     <Slider
                         style={{ width: 300, height: 40 }}
@@ -66,24 +67,24 @@ export default function Notification() {
                         minimumTrackTintColor={getColor()} // Set color based on mood
                         maximumTrackTintColor='gray'
                     />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.text}>{'\u{1F62A}'}</Text>
-                        <Text style={styles.text}>{'\u{1F612}'}</Text>
-                        <Text style={styles.text}>{'\u{1F610}'}</Text>
-                        <Text style={styles.text}>{'\u{1F642}'}</Text>
-                        <Text style={styles.text}>{'\u{1F601}'}</Text>
+                    <View style={style.textContainer}>
+                        <Text style={style.text}>{'\u{1F62A}'}</Text>
+                        <Text style={style.text}>{'\u{1F612}'}</Text>
+                        <Text style={style.text}>{'\u{1F610}'}</Text>
+                        <Text style={style.text}>{'\u{1F642}'}</Text>
+                        <Text style={style.text}>{'\u{1F601}'}</Text>
                     </View>
             <View style={{flexDirection:'row', marginTop:30}}>
                         <Pressable
-              style={[styles.button, styles.buttonOpen]}
+              style={[style.button, style.buttonOpen]}
               onPress={saveMood}
             >
-              <Text style={styles.textStyle}>Save</Text>
+              <Text style={style.textStyle}>Save</Text>
                     </Pressable>
             <Pressable
-                    style={[styles.button, styles.buttonClose]}
+                    style={[style.button, style.buttonClose]}
               onPress={() => setNotifVisible(!notifVisible)}>
-                <Text style={styles.textStyle}> Close</Text>
+                <Text style={style.textStyle}> Close</Text>
             </Pressable>
             </View>        
 
@@ -92,56 +93,3 @@ export default function Notification() {
       </Modal>
     )
 }
-const styles = StyleSheet.create({
-   textContainer: {
-    width: 300,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-    zIndex: 999,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    zIndex: 999,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    textAlign: 'center', 
-    marginHorizontal:50
-  },
-  buttonOpen: {
-    backgroundColor: "#2196F3",
-  },
-  buttonClose: {
-    backgroundColor: "#808080",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-
-});

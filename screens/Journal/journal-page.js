@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from 'react-native';
 import JournalList from '../../components/journal-list';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import React, { useState } from "react";
+import { useContext, useEffect, useState } from 'react';
+import { CurrentUser } from '../../App';
+import { db } from '../../firebase/config';
+import style from '../../styles/notification-styles';
 
 export default function JournalScreen({ navigation }) {
   const [calendarView, setCalendarView] = useState(false);
@@ -14,6 +17,45 @@ export default function JournalScreen({ navigation }) {
     ];
   
   const todayDate = current.getDate() + ' ' + monthNames[current.getMonth()] + ', ' + current.getFullYear();
+  const {userId, setUserId}=useContext(CurrentUser)
+  const [userName, setUserName] = useState('');
+  const [newEntry, setNewEntry] = useState(false);
+  const [notifVisible, setNotifVisible] = useState(false);
+
+  useEffect(()=>{
+    if(!userId){
+      alert("No user authenticated!")
+    }
+    db.collection('users')
+    .where("id", '==', userId)
+    .get()
+    .then((response)=>{
+      response.docs[0].data().name?setUserName(response.docs[0].data().name):null;
+    })
+    const entryDate= new Date()
+    entryDate.setHours(0);
+    entryDate.setMinutes(0);
+    entryDate.setSeconds(0);
+    entryDate.setMilliseconds(0);
+    db.collection('journal')
+      .where('user_id', '==', userId)
+      .where('date', '==', entryDate)
+      .get()
+      .then((response) => {
+        if (response.empty) {
+          setNewEntry(true)
+        } else {
+          setNewEntry(false)
+        }
+    })   
+  })
+  const handleNewEntry = () => {
+    if (newEntry) {
+      navigation.navigate("Add")
+    } else {
+      setNotifVisible(true)
+    }
+  }
   return (
     <View style={{flex:1}}>
     <View style={{height:250, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:30}}>
@@ -35,6 +77,37 @@ export default function JournalScreen({ navigation }) {
       </TouchableOpacity>
     </View>
       </View>
+      <Modal
+            animationType="slide"
+            transparent={true}
+            visible={notifVisible}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setNotifVisible(!notifVisible);
+        }}  
+        >
+            <View style={style.centeredView}>
+                
+                <View style={style.modalView}>
+                    
+                    <Text style={style.modalText}>You have already wrote an entry for today. Would you like to edit it?</Text>
+            <View style={{flexDirection:'row', marginTop:30}}>
+                        <Pressable
+              style={[style.button, style.buttonOpen]}
+              onPress={() => setNotifVisible(false)}
+            >
+              <Text style={style.textStyle}>Yes</Text>
+                    </Pressable>
+            <Pressable
+                    style={[style.button, style.buttonClose]}
+              onPress={() => setNotifVisible(false)}>
+                <Text style={style.textStyle}> No</Text>
+            </Pressable>
+            </View>        
+
+          </View>
+        </View>
+      </Modal>
     
       {!calendarView ?
         <View style={{ flex: 3 }}>
@@ -42,7 +115,7 @@ export default function JournalScreen({ navigation }) {
         </View> :
         <JournalList calendarView={calendarView}/>      
         }
-    <TouchableOpacity style={styles.addBtn} onPress={()=>navigation.navigate("Add")}>
+    <TouchableOpacity style={styles.addBtn} onPress={handleNewEntry}>
         <Text style={styles.addBtnText}>Add a new entry</Text>
     </TouchableOpacity>
     
