@@ -1,5 +1,4 @@
 import { Text, TouchableOpacity, View, StyleSheet} from "react-native"
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 export default function SettingsScreen({navigation}){
     const logOut = ()=>{
@@ -15,7 +14,7 @@ export default function SettingsScreen({navigation}){
         <View>
         <View style={{height:200, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:30}}>
             <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
-                <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}><Fontisto name='bell' size={30} color={'black'}/></TouchableOpacity>
+                <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}></TouchableOpacity>
                 <TouchableOpacity style={{flex:0, paddingVertical:10, paddingHorizontal:10}} onPress={()=> navigation.navigate("User", {screen: 'Settings'})}>< MaterialCommunityIcons name='dots-grid' size={30} color={'black'}/></TouchableOpacity>
             </View>
             <Text  style={{ fontSize: 35, color:'black', justifyContent:'center'}}> Settings</Text>

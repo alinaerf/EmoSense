@@ -16,10 +16,10 @@ const firebaseConfig = {
 let app;
 
 if (firebase.apps.length === 0) {
-    app = firebase.initializeApp(firebaseConfig)
+  app = firebase.initializeApp(firebaseConfig);
   } else {
     console.log("Init error!")
   }
   
-const db = app.firestore();  
+const db = app.firestore();
 export { db, app };

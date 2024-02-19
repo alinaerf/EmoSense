@@ -28,6 +28,12 @@ const styles = StyleSheet.create({
         padding: 5,
         margin:10
     }, 
+    discardButton: {
+        backgroundColor: "#808080",
+        borderRadius: 50,
+        padding: 5,
+        margin:10
+    }, 
     btnText: {
         color: 'white',
         fontSize: 15,

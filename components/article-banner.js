@@ -6,7 +6,7 @@ export default function ArticleBanner({ title, description, link }) {
     }
     return (
         <TouchableOpacity
-        style={{padding:30, borderWidth:1, borderRadius:10, marginVertical:5, backgroundColor:'white', marginVertical:10}} onPress={redirectToArticle}>
+        style={{padding:30,  borderRadius:30, marginVertical:5, backgroundColor:'white', marginVertical:10}} onPress={redirectToArticle}>
             <Image source={require('./images/placeholder-image.jpg')} style={{width:350, height:150, borderRadius:10, alignSelf:'center'}}/>
             <Text style={{fontWeight:'bold'}}>{title}</Text>
             <Text>{description}</Text>

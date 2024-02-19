@@ -2,7 +2,6 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../../App';
 import { db } from '../../firebase/config';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function UserScreen({navigation}) {
@@ -25,7 +24,7 @@ export default function UserScreen({navigation}) {
     <View>
           <View style={{height:170, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:20}}>
     <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
-        <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}><Fontisto name='bell' size={30} color={'black'}/></TouchableOpacity>
+        <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}></TouchableOpacity>
         <TouchableOpacity style={{flex:0, paddingVertical:10, paddingHorizontal:10}} onPress={()=> navigation.navigate("Settings")} >< MaterialCommunityIcons name='dots-grid' size={30} color={'black'}/></TouchableOpacity>
     </View>
       <Text  style={{ fontSize: 35, color:'black', justifyContent:'center', marginBottom:15}}> Me</Text>

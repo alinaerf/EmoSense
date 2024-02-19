@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from 'react-native';
 import JournalList from '../../components/journal-list';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../../App';
 import { db } from '../../firebase/config';
 import style from '../../styles/notification-styles';
+import { Timestamp } from 'firebase/firestore';
+
 
 export default function JournalScreen({ navigation }) {
   const [calendarView, setCalendarView] = useState(false);
@@ -21,6 +22,9 @@ export default function JournalScreen({ navigation }) {
   const [userName, setUserName] = useState('');
   const [newEntry, setNewEntry] = useState(false);
   const [notifVisible, setNotifVisible] = useState(false);
+  const [oldDesc, setOldDesc] = useState('');
+  const [oldTitle, setOldTitle] = useState('');
+  const [oldId, setOldId] = useState('');
 
   useEffect(()=>{
     if(!userId){
@@ -37,21 +41,29 @@ export default function JournalScreen({ navigation }) {
     entryDate.setMinutes(0);
     entryDate.setSeconds(0);
     entryDate.setMilliseconds(0);
+    //console.log(entryDate)
+    const fsDate = Timestamp.fromDate(entryDate)
+    console.log(fsDate)
     db.collection('journal')
-      .where('user_id', '==', userId)
-      .where('date', '==', entryDate)
+      .doc(userId)
+      .collection('entries')
+      .where('date', '==', fsDate)
       .get()
       .then((response) => {
         if (response.empty) {
           setNewEntry(true)
         } else {
+          const oldData= response.docs[0].data()
+          setOldDesc(oldData.text);
+          setOldTitle(oldData.title);
+          setOldId(response.docs[0].id)
           setNewEntry(false)
         }
     })   
   })
   const handleNewEntry = () => {
     if (newEntry) {
-      navigation.navigate("Add")
+      navigation.navigate("Add", {add: true})
     } else {
       setNotifVisible(true)
     }
@@ -60,7 +72,7 @@ export default function JournalScreen({ navigation }) {
     <View style={{flex:1}}>
     <View style={{height:250, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:30}}>
     <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
-        <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}><Fontisto name='bell' size={30} color={'black'}/></TouchableOpacity>
+        <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}></TouchableOpacity>
         <TouchableOpacity style={{flex:0, paddingVertical:10, paddingHorizontal:10}} onPress={()=> navigation.navigate("User", {screen: 'Settings'})}>< MaterialCommunityIcons name='dots-grid' size={30} color={'black'}/></TouchableOpacity>
     </View>
     <Text style={{ fontSize: 20, color:'#a8a8ae', justifyContent:'center', marginTop:10}}>{todayDate}</Text>
@@ -90,11 +102,21 @@ export default function JournalScreen({ navigation }) {
                 
                 <View style={style.modalView}>
                     
-                    <Text style={style.modalText}>You have already wrote an entry for today. Would you like to edit it?</Text>
+                    <Text style={style.modalText}>You have already written an entry for today. Would you like to edit it?</Text>
             <View style={{flexDirection:'row', marginTop:30}}>
                         <Pressable
               style={[style.button, style.buttonOpen]}
-              onPress={() => setNotifVisible(false)}
+                onPress={() => {
+                  setNotifVisible(false)
+                  navigation.navigate("Add", {
+                    add: false,
+                    oldDesc: oldDesc,
+                    oldTitle: oldTitle,
+                    oldId: oldId
+                  }
+                    
+                  )
+              } }
             >
               <Text style={style.textStyle}>Yes</Text>
                     </Pressable>

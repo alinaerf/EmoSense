@@ -19,7 +19,7 @@ export default function Notification() {
         setMood(value);
     };
     const saveMood = () => {
-        const moodRef = app.firebase.firestore().collection('moods');
+        const moodRef = app.firebase.firestore().collection('moods').doc(userId).collection('moods');
         const current= new Date()
         const monthNames = [
             'January', 'February', 'March', 'April', 'May', 'June',
@@ -28,7 +28,6 @@ export default function Notification() {
         const entryDate = [current.getDay()] + ', ' + monthNames[current.getMonth()] + ', ' + current.getFullYear();
         
         const postData={
-            'user_id':userId,
             'mood':mood,
             'date': entryDate,
         };

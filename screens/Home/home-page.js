@@ -3,7 +3,6 @@ import ArticleList from '../../components/article-list';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../../App';
 import { db } from '../../firebase/config';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notification from '../Notification/notification';
 
@@ -30,7 +29,8 @@ export default function HomeScreen({navigation}) {
     
     const entryDate=[current.getDay()]+', '+monthNames[current.getMonth()] + ', '+ current.getFullYear();
     db.collection('moods')
-      .where('user_id', '==', userId)
+      .doc(userId)
+      .collection('moods')
       .where('date', '==', entryDate)
       .get()
       .then((response) => {
@@ -45,7 +45,7 @@ export default function HomeScreen({navigation}) {
     <View style={{flex:1}}>
       <View style={{height:250, backgroundColor:'#7455f6', justifyContent:'center',alignItems: 'center', borderRadius:20}}>
         <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
-        <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}><Fontisto name='bell' size={30} color={'white'}/></TouchableOpacity>
+         <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}></TouchableOpacity>
         <TouchableOpacity style={{flex:0, paddingVertical:10, paddingHorizontal:10}}>< MaterialCommunityIcons name='dots-grid' size={30} color={'white'} onPress={()=> navigation.navigate("User", {screen: 'Settings'})}/></TouchableOpacity>
         </View>
       <View>

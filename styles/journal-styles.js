@@ -3,8 +3,7 @@ import { StyleSheet } from "react-native";
 styles = StyleSheet.create({
     container: {
         padding: 30,
-        borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 30,
         marginVertical: 5,
         backgroundColor: 'white'
     },

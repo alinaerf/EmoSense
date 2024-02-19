@@ -72,7 +72,7 @@ export default function RegistrationScreen({navigation}){
                 })
                 .catch((error) => {
                     alert(error)
-                });
+                });            
         })
         .catch((error) => {
             alert(error)

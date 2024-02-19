@@ -8,7 +8,7 @@ import { Calendar } from "react-native-calendars";
 import { useNavigation } from "@react-navigation/native";
 const JournalList =({calendarView})=>{
     const renderItem =({item})=>{
-        return <JournalItem title={item.title} description={item.text} date={item.date} MLMood={item.MLMood}/>
+        return <JournalItem title={item.title} description={item.text} date={item.date} MLMood={item.MLMood} dbId={item.id} />
     }
     const {userId, setUserId}=useContext(CurrentUser)
     const [data, setData] = useState([])
@@ -17,7 +17,7 @@ const JournalList =({calendarView})=>{
     const navigation=useNavigation()
     const fetchData = async ()=>{
         try {
-            const response= await db.collection('journal').where("user_id", '==', userId).orderBy('date', 'desc').get()
+            const response= await db.collection('journal').doc(userId).collection('entries').orderBy('date', 'desc').get()
             const newData = []
             const newDates = {}
             const newDatesInfo={}
@@ -33,7 +33,7 @@ const JournalList =({calendarView})=>{
                     marked: true, dotColor: moodColor, selected: true, selectedColor: 'rgba(116, 85, 246, 0.5)'
                 };
                 newDatesInfo[date] = {
-                    description:doc.data().text, title:doc.data().title, date: doc.data().date, MLMood:doc.data().MLMood
+                    text:doc.data().text, title:doc.data().title, date: doc.data().date, MLMood:doc.data().MLMood, id: doc.id
                 };
             })
             setData(prevData => [...prevData, ...newData])
@@ -54,7 +54,6 @@ const JournalList =({calendarView})=>{
             setData([])
             //setDates({})
             fetchData();
-            console.log(dates)
         }, [])
       );
     return (
@@ -74,8 +73,9 @@ const JournalList =({calendarView})=>{
                             console.log(datesInfo[day.dateString])
                             item = datesInfo[day.dateString]
                             title = item['title']
-                            text=item['description']
-                            navigation.navigate('Entry', {title,text})
+                            description = item['text']
+                            dbId=item['id']
+                            navigation.navigate('Entry', {title,description, dbId})
                         }}    
                     />
             }
