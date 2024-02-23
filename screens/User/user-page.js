@@ -74,7 +74,7 @@ export default function UserScreen({navigation}) {
 
   return (
     <View>
-          <View style={{height:170, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:20}}>
+          <View style={{height:'20%',minHeight:130, backgroundColor:'white', justifyContent:'center',alignItems: 'center', borderRadius:20, paddingTop:20}}>
     <View style={{flexDirection:'row',  alignItems: 'center',justifyContent: 'flex-end',paddingHorizontal: 10}}>
         <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}></TouchableOpacity>
         <TouchableOpacity style={{flex:0, paddingVertical:10, paddingHorizontal:10}} onPress={()=> navigation.navigate("Settings")} >< MaterialCommunityIcons name='dots-grid' size={30} color={'black'}/></TouchableOpacity>

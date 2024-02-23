@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, TouchableOpacity, TextInput } from "react-native"
+import { Text, SafeAreaView, TouchableOpacity, TextInput, StyleSheet, Platform } from "react-native"
 import { useState } from "react";
 import { app } from '../../firebase/config';
 import styles from "../../styles/input-styles";
@@ -31,7 +31,7 @@ export default function FeedbackScreen({navigation}){
     }
 
     return(
-        <SafeAreaView>
+        <SafeAreaView style={stylee.safeArea}> 
             <TextInput
                 value={title}
                 onChangeText={onChangeTitle}
@@ -52,3 +52,8 @@ export default function FeedbackScreen({navigation}){
         </SafeAreaView>
     )
 }
+const stylee = StyleSheet.create({
+safeArea: {
+    paddingTop: Platform.OS === 'android' ? 50 : 0,
+  }
+})

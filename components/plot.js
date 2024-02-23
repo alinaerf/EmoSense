@@ -66,7 +66,7 @@ plotData = plotData.sort((a, b) => moment(a.x, 'DD-MM').toDate() - moment(b.x, '
         <Text style={{alignSelf:'center', fontWeight:'bold', marginBottom:10}}>{showData1 ?'Your input mood':'ML-assessed mood'}</Text>
           <PureChart
               width={'50%'}
-              height={320}
+              height={250}
               data={chartData}
               maxValue={5}
               minValue={0}

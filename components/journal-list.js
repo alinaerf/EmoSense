@@ -1,4 +1,4 @@
-import { View, FlatList } from "react-native";
+import { View, FlatList, Text } from "react-native";
 import { CurrentUser } from "../stack/auth-context";
 import { db } from '../firebase/config';
 import JournalItem from "./journal-item";
@@ -60,11 +60,16 @@ const JournalList =({calendarView})=>{
         <View >
             {
                 !calendarView ?
+                    data.length!==0?
                 <FlatList
                 data={data}
                 keyExtractor={item=>item.id}
                 renderItem={renderItem}
-            />
+                
+                        /> :
+                        <View style={{ height:'100%',justifyContent: 'center', alignItems:'center', paddingHorizontal:20}}>
+                            <Text style={{textAlign:'center'}}>Start your journaling journey today and document your thoughts, memories, and experiences—there are no entries yet, but your story awaits its first chapter!</Text>
+                        </View>
                     :
                     <Calendar
                         markedDates={dates}
@@ -72,10 +77,12 @@ const JournalList =({calendarView})=>{
                             console.log('selected day', day.dateString);
                             console.log(datesInfo[day.dateString])
                             item = datesInfo[day.dateString]
-                            title = item['title']
+                            if (item) {
+                                title = item['title']
                             description = item['text']
                             dbId=item['id']
                             navigation.navigate('Entry', {title,description, dbId})
+                            }
                         }}    
                     />
             }

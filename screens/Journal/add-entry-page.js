@@ -1,4 +1,4 @@
-import { TextInput, Text, SafeAreaView } from "react-native"
+import { TextInput, Text, SafeAreaView, StyleSheet, Platform } from "react-native"
 import React, { useEffect } from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useContext, useState } from "react";
@@ -40,9 +40,7 @@ export default function AddEntryScreen({navigation}){
                     date: date,
                 };
                 
-            
                 await journalRef.add(postData);
-
                 console.log('Document added!');
                 
             } else {
@@ -75,7 +73,7 @@ export default function AddEntryScreen({navigation}){
     }, [])
 
     return(
-        <SafeAreaView>
+        <SafeAreaView style={stylee.safeArea}> 
             <TextInput
                 value={title}
                 onChangeText={onChangeTitle}
@@ -104,3 +102,8 @@ export default function AddEntryScreen({navigation}){
         </SafeAreaView>
     )
 }
+const stylee = StyleSheet.create({
+safeArea: {
+    paddingTop: Platform.OS === 'android' ? 50 : 0,
+  }
+})

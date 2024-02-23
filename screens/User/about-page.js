@@ -1,7 +1,7 @@
-import { Text, SafeAreaView, FlatList, View } from "react-native"
+import { Text, SafeAreaView, FlatList, View, StyleSheet, Platform } from "react-native"
 export default function AboutScreen({}){
     return(
-        <SafeAreaView>
+        <SafeAreaView style={stylee.safeArea}> 
             <Text style={{
                     fontSize:28,
                     fontWeight: '500', 
@@ -31,3 +31,8 @@ export default function AboutScreen({}){
         </SafeAreaView>
     )
 }
+const stylee = StyleSheet.create({
+safeArea: {
+    paddingTop: Platform.OS === 'android' ? 50 : 0,
+  }
+})

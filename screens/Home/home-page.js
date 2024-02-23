@@ -49,7 +49,7 @@ export default function HomeScreen({navigation}) {
          <TouchableOpacity style={{flex:1, paddingVertical:10, paddingHorizontal:10}}></TouchableOpacity>
         <TouchableOpacity style={{flex:0, paddingVertical:10, paddingHorizontal:10}}>< MaterialCommunityIcons name='dots-grid' size={30} color={'white'} onPress={()=> navigation.navigate("User", {screen: 'Settings'})}/></TouchableOpacity>
         </View>
-      <View>
+      <View style={{alignItems:'center'}}>
       <Image source={require('./images/profile-pic.jpg')} style={{width:50, height:50, borderRadius:10, alignSelf:'center'}}/>
       <Text style={{ fontSize: 25, color:'#af9ff7', justifyContent:'center', marginTop:10}}>Welcome back,</Text>
       <Text  style={{ fontSize: 25, color:'white', justifyContent:'center'}}> {userName}</Text>

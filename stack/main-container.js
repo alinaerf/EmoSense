@@ -36,12 +36,12 @@ function MainContainer() {
           tabBarActiveTintColor:'#7455f6', 
           tabBarInactiveTintColor:"black",
           tabBarLabelStyle:{
-            paddingBottom: 10,
+            paddingBottom: 5,
             fontSize: 10
           },
           tabBarStyle:[
             {
-              display:'flex'
+              display: 'flex'
             },
             null
           ], 

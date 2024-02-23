@@ -14,7 +14,7 @@ export default function RegistrationScreen({ navigation }) {
     const [date, setDate]=useState(new Date());
     const [showPicker, setShowPicker]=useState(false);
     const [dateOfBirth,setDateOfBirth]=useState("");
-    const [MLopt, setMLOpt]=useState(false)
+    const [MLopt, setMLOpt]=useState(true)
     const {userId, setUserId}=useContext(CurrentUser)
     const toggleOpt = ()=>{
         setMLOpt(!MLopt)
@@ -133,7 +133,7 @@ export default function RegistrationScreen({ navigation }) {
             <InputField label={'Password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} value={password} onChangeFunc={(text)=>setPassword(text)}/>
             <InputField label={'Confirm password'} icon={<Ionicons name='ios-lock-closed-outline' size={20} color='#666'style={{marginRight:5}}/>} inputType={'password'} value={confirmPassword} onChangeFunc={(text)=>setConfirmPassword(text)}/>
             
-            <View style={{flexDirection:'row', paddingBottom:8, marginBottom:25}}>
+            <View style={{flexDirection:'row', paddingBottom:8, marginBottom:25, alignItems: 'center'}}>
                 <Text style={{flex:1, paddingVertical:0, }}> Opt in for ML features?</Text>
             <Switch
                 trackColor={{false: '#767577', true: '#7455f6'}}
