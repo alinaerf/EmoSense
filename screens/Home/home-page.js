@@ -5,6 +5,7 @@ import { CurrentUser } from '../../App';
 import { db } from '../../firebase/config';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notification from '../Notification/notification';
+import { Timestamp } from 'firebase/firestore';
 
 
 export default function HomeScreen({navigation}) {
@@ -21,17 +22,17 @@ export default function HomeScreen({navigation}) {
     .then((response)=>{
       response.docs[0].data().name?setUserName(response.docs[0].data().name):null;
     })
-    const current= new Date()
-    const monthNames = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-      ];
-    
-    const entryDate=[current.getDay()]+', '+monthNames[current.getMonth()] + ', '+ current.getFullYear();
+    const entryDate= new Date()
+    entryDate.setHours(0);
+    entryDate.setMinutes(0);
+    entryDate.setSeconds(0);
+    entryDate.setMilliseconds(0);
+    const fsDate = Timestamp.fromDate(entryDate)
+
     db.collection('moods')
       .doc(userId)
       .collection('moods')
-      .where('date', '==', entryDate)
+      .where('date', '==', fsDate)
       .get()
       .then((response) => {
         if (response.empty) {

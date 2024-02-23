@@ -1,6 +1,6 @@
 import { ML_URL } from "@env";
 export default analyzeSentiment = async (text) => {
-    console.log(ML_URL+'analyzeSentiment')
+    console.log(ML_URL+'/analyzeSentiment')
     try {
         const response = await fetch(ML_URL+'/analyzeSentiment', {
             method: 'POST',

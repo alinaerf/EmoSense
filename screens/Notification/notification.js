@@ -2,8 +2,9 @@ import { Modal, View, Text, Pressable, StyleSheet } from "react-native"
 import Slider from "@react-native-community/slider";
 import { useState, useContext } from "react";
 import { CurrentUser } from '../../App';
-import { app } from '../../firebase/config';
+import { db } from '../../firebase/config';
 import style from "../../styles/notification-styles";
+
 export default function Notification() {
     const [notifVisible, setNotifVisible] = useState(true);
     const [mood, setMood] = useState(3);
@@ -19,14 +20,12 @@ export default function Notification() {
         setMood(value);
     };
     const saveMood = () => {
-        const moodRef = app.firebase.firestore().collection('moods').doc(userId).collection('moods');
-        const current= new Date()
-        const monthNames = [
-            'January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'
-        ];
-        const entryDate = [current.getDay()] + ', ' + monthNames[current.getMonth()] + ', ' + current.getFullYear();
-        
+        const moodRef = db.collection('moods').doc(userId).collection('moods');
+        const entryDate= new Date()
+        entryDate.setHours(0);
+        entryDate.setMinutes(0);
+        entryDate.setSeconds(0);
+        entryDate.setMilliseconds(0);        
         const postData={
             'mood':mood,
             'date': entryDate,

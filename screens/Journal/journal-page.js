@@ -43,7 +43,7 @@ export default function JournalScreen({ navigation }) {
     entryDate.setMilliseconds(0);
     //console.log(entryDate)
     const fsDate = Timestamp.fromDate(entryDate)
-    console.log(fsDate)
+    //console.log(fsDate)
     db.collection('journal')
       .doc(userId)
       .collection('entries')
