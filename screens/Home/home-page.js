@@ -1,17 +1,17 @@
 import { Text, View, TouchableOpacity, Image } from 'react-native';
 import ArticleList from '../../components/article-list';
 import { useContext, useEffect, useState } from 'react';
-import { CurrentUser } from '../../App';
+import { CurrentUser } from '../../stack/auth-context';
 import { db } from '../../firebase/config';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notification from '../Notification/notification';
 import { Timestamp } from 'firebase/firestore';
 
-
 export default function HomeScreen({navigation}) {
   const {userId, setUserId}=useContext(CurrentUser)
   const [userName, setUserName] = useState('');
   const [newDay, setNewDay] = useState(false);
+
   useEffect(()=>{
     if(!userId){
       alert("No user authenticated!")

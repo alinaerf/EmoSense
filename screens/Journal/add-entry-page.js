@@ -2,7 +2,7 @@ import { TextInput, Text, SafeAreaView } from "react-native"
 import React, { useEffect } from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useContext, useState } from "react";
-import { CurrentUser } from '../../App';
+import { CurrentUser } from "../../stack/auth-context";
 import { app } from '../../firebase/config';
 import calculateMLMood from "../../backend/ML_calculation";
 import styles from "../../styles/input-styles";

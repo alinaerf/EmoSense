@@ -5,8 +5,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import InputField from '../../components/input-field';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { app } from '../../firebase/config';
-import { CurrentUser } from '../../App';
-export default function RegistrationScreen({navigation}){
+import { CurrentUser } from '../../stack/auth-context';
+export default function RegistrationScreen({ navigation }) {
     const [name, setName]=useState('');
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');

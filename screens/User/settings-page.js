@@ -1,6 +1,8 @@
 import { Text, TouchableOpacity, View, StyleSheet} from "react-native"
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-export default function SettingsScreen({navigation}){
+export default function SettingsScreen({ navigation }) {
+    //const {userId, setUserId}=useContext(CurrentUser)
+
     const logOut = ()=>{
         navigation.navigate("Auth", {screen: 'Login'})
     }

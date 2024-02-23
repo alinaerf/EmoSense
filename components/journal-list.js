@@ -1,5 +1,5 @@
 import { View, FlatList } from "react-native";
-import { CurrentUser } from '../App';
+import { CurrentUser } from "../stack/auth-context";
 import { db } from '../firebase/config';
 import JournalItem from "./journal-item";
 import React, { useContext, useEffect, useState } from "react";

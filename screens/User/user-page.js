@@ -1,6 +1,6 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import React,{ useContext, useEffect, useState } from 'react';
-import { CurrentUser } from '../../App';
+import { CurrentUser } from '../../stack/auth-context';
 import { db } from '../../firebase/config';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinePlot from '../../components/plot';

@@ -1,7 +1,7 @@
 import { Modal, View, Text, Pressable, StyleSheet } from "react-native"
 import Slider from "@react-native-community/slider";
 import { useState, useContext } from "react";
-import { CurrentUser } from '../../App';
+import { CurrentUser } from "../../stack/auth-context";
 import { db } from '../../firebase/config';
 import style from "../../styles/notification-styles";
 

@@ -5,8 +5,8 @@ import InputField from '../../components/input-field';
 import { useState } from 'react';
 import { app } from '../../firebase/config';
 import { useContext } from 'react';
-import { CurrentUser } from '../../App';
-export default function LoginScreen({navigation}){
+import { CurrentUser } from '../../stack/auth-context';
+export default function LoginScreen({ navigation }) {
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
     const {userId, setUserId}=useContext(CurrentUser)

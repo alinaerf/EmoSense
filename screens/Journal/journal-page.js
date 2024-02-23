@@ -3,7 +3,7 @@ import JournalList from '../../components/journal-list';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useContext, useEffect, useState } from 'react';
-import { CurrentUser } from '../../App';
+import { CurrentUser } from '../../stack/auth-context';
 import { db } from '../../firebase/config';
 import style from '../../styles/notification-styles';
 import { Timestamp } from 'firebase/firestore';
@@ -25,6 +25,7 @@ export default function JournalScreen({ navigation }) {
   const [oldDesc, setOldDesc] = useState('');
   const [oldTitle, setOldTitle] = useState('');
   const [oldId, setOldId] = useState('');
+  
 
   useEffect(()=>{
     if(!userId){
