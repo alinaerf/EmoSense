@@ -4,8 +4,30 @@ EmoSense, a mobile application for everyday use, aims to improve user’s unders
 
 ## Demo of the application
 
- <img src="https://hackmd.io/_uploads/BJVErbQ10.png" alt="Main pages of the application"/>
-\
+**Home Page**
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+ <img src="https://github.com/alinaerf/EmoSense/assets/90750587/3a53532f-dd66-48f3-88e9-ca3dba4ad58c" alt="photo_1" width="200"/>
+ <img src="https://github.com/alinaerf/EmoSense/assets/90750587/9a98f330-766f-42ef-844e-04e233fb00ac" alt="photo_2" width="200"/>
+ </div>
+
+
+ 
+
+**Journal Page**
+ <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+ <img src="https://github.com/alinaerf/EmoSense/assets/90750587/e39599a0-5b33-4364-8162-2c03d174a87b" alt="photo_1" width="200"/>
+ <img src="https://github.com/alinaerf/EmoSense/assets/90750587/c4e4aae3-623e-444f-acb3-783bae1443c6" alt="photo_2" width="200"/>
+ </div>
+
+
+
+**User Page**
+ <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+ <img src="https://github.com/alinaerf/EmoSense/assets/90750587/cc9e8a36-f0ff-498d-a391-3ef2a49c1f36" alt="photo_1" width="200"/>
+ <img src="https://github.com/alinaerf/EmoSense/assets/90750587/bd79492f-44d0-41da-aa27-f67e5bbfe744" alt="photo_2" width="200"/>
+ </div> 
+
+
 
 ## User story
 ---
