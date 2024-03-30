@@ -3,7 +3,6 @@ const styles = StyleSheet.create({
     titleInput: {
         margin: 10,
         padding: 20,
-        borderWidth: 1,
         borderRadius: 10,
         marginVertical: 5,
         backgroundColor: 'white',
@@ -14,7 +13,6 @@ const styles = StyleSheet.create({
     textInput: {
         margin: 10,
         padding: 20,
-        borderWidth: 1,
         borderRadius: 10,
         backgroundColor: 'white',
         marginVertical: 10,
